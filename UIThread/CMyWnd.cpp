@@ -57,6 +57,6 @@ void CMyWnd::OnPaint()
 
 	// 현재까지 입력된 글자를 화면에 출력한다.
 	CRect rect;
-	dc.Rectangle(&rect);
+	GetClientRect(&rect);
 	dc.DrawText(m_str.GetData(), m_str.GetSize(), &rect, DT_LEFT);
 }
