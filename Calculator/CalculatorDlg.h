@@ -31,6 +31,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CString m_result;
+	CString m_sample;
 	CString m_buf;
 	bool m_bEqualClk;
 	int m_cType;

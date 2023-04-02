@@ -53,6 +53,7 @@ END_MESSAGE_MAP()
 CCalculatorDlg::CCalculatorDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_CALCULATOR_DIALOG, pParent)
 	, m_result(_T(""))
+	, m_sample(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
@@ -64,7 +65,7 @@ void CCalculatorDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT1, m_result);
-	DDX_Text(pDX, IDC_EDIT1, m_result);
+	DDX_Text(pDX, IDC_EDIT2, m_sample);
 }
 
 BEGIN_MESSAGE_MAP(CCalculatorDlg, CDialogEx)
@@ -126,10 +127,11 @@ BOOL CCalculatorDlg::OnInitDialog()
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 	CFont g_editFont;
-	CEdit* pEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
+	CEdit* pEdit1 = (CEdit*)GetDlgItem(IDC_EDIT1);
+	CEdit* pEdit2 = (CEdit*)GetDlgItem(IDC_EDIT2);
 
 	g_editFont.CreatePointFont(200, TEXT("굴림"));
-	pEdit->SetFont(&g_editFont);
+	pEdit1->SetFont(&g_editFont);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -186,7 +188,7 @@ HCURSOR CCalculatorDlg::OnQueryDragIcon()
 
 enum Calculation
 {
-	PLUS, MINUS, DIVISION, MULTI
+	PLUS = 1, MINUS, DIVISION, MULTI
 };
 
 
@@ -195,9 +197,11 @@ void CCalculatorDlg::OnBnClickedNum0()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("0");
+	m_sample += _T("0");
 	UpdateData(FALSE);
 }
 
@@ -207,9 +211,11 @@ void CCalculatorDlg::OnBnClickedNum1()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("1");
+	m_sample += _T("1");
 	UpdateData(FALSE);
 }
 
@@ -219,9 +225,11 @@ void CCalculatorDlg::OnBnClickedNum2()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("2");
+	m_sample += _T("2");
 	UpdateData(FALSE);
 }
 
@@ -231,9 +239,11 @@ void CCalculatorDlg::OnBnClickedNum3()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("3");
+	m_sample += _T("3");
 	UpdateData(FALSE);
 }
 
@@ -243,9 +253,11 @@ void CCalculatorDlg::OnBnClickedNum4()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("4");
+	m_sample += _T("4");
 	UpdateData(FALSE);
 }
 
@@ -255,9 +267,11 @@ void CCalculatorDlg::OnBnClickedNum5()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("5");
+	m_sample += _T("5");
 	UpdateData(FALSE);
 }
 
@@ -267,9 +281,11 @@ void CCalculatorDlg::OnBnClickedNum6()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("6");
+	m_sample += _T("6");
 	UpdateData(FALSE);
 }
 
@@ -279,9 +295,11 @@ void CCalculatorDlg::OnBnClickedNum7()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("7");
+	m_sample += _T("7");
 	UpdateData(FALSE);
 }
 
@@ -291,9 +309,11 @@ void CCalculatorDlg::OnBnClickedNum8()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("8");
+	m_sample += _T("8");
 	UpdateData(FALSE);
 }
 
@@ -303,9 +323,11 @@ void CCalculatorDlg::OnBnClickedNum9()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T("9");
+	m_sample += _T("9");
 	UpdateData(FALSE);
 }
 
@@ -315,9 +337,11 @@ void CCalculatorDlg::OnBnClickedDot()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	if (m_bEqualClk) {
 		m_result.Empty();
+		m_sample.Empty();
 		m_bEqualClk = FALSE;
 	}
 	m_result += _T(".");
+	m_sample += _T(".");
 	UpdateData(FALSE);
 }
 
@@ -331,7 +355,7 @@ void CCalculatorDlg::OnBnClickedCalc()
 
 	num1 = _tstof(m_buf);
 	num2 = _tstof(m_result);
-
+	
 	switch (m_cType)
 	{
 	case PLUS:
@@ -349,10 +373,13 @@ void CCalculatorDlg::OnBnClickedCalc()
 	}
 	if (floor(result) == result) {
 		m_result.Format(_T("%d"), (int)result);
+		m_sample.Format(_T("%d"), (int)result);
 	}
 	else {
 		m_result.Format(_T("%.2f"), result);
+		m_sample.Format(_T("%.2f"), result);
 	}
+	m_cType = 0;
 	UpdateData(FALSE);
 	m_bEqualClk = TRUE;
 }
@@ -361,36 +388,92 @@ void CCalculatorDlg::OnBnClickedCalc()
 void CCalculatorDlg::OnBnClickedPlus()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	if(m_cType == 0){
+		m_buf = m_result;
+		m_sample += _T(" + ");
+		m_result.Empty();
+	}
+	else if(m_cType != PLUS){
+		m_sample.Delete(m_sample.GetLength() - 3, 3);
+		m_sample += _T(" + ");
+		m_cType = PLUS;
+		return;
+	}
+	else if (!m_buf.IsEmpty() && !m_result.IsEmpty()) {
+		double num1 = 0;
+		double num2 = 0;
+		double result = 0;
+
+		num1 = _tstof(m_buf);
+		num2 = _tstof(m_result);
+
+		result = num1 + num2;
+		if (floor(result) == result) {
+			m_result.Format(_T("%d"), (int)result);
+			m_sample.Format(_T("%d"), (int)result);
+		}
+		else {
+			m_result.Format(_T("%.2f"), result);
+			m_sample.Format(_T("%.2f"), result);
+		}
+		m_result.Empty();
+		m_sample += _T(" + ");
+	}
 	m_cType = PLUS;
-	m_buf = m_result;
-	m_result.Empty();
+	UpdateData(FALSE);
 }
 
 
 void CCalculatorDlg::OnBnClickedMinus()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	if (m_cType == 0) {
+		m_buf = m_result;
+		m_sample += _T(" - ");
+		m_result.Empty();
+	}
+	else {
+		m_sample.Delete(m_sample.GetLength() - 3, 3);
+		m_sample += _T(" - ");
+	}
 	m_cType = MINUS;
-	m_buf = m_result;
-	m_result.Empty();
+	UpdateData(FALSE);
 }
 
 
 void CCalculatorDlg::OnBnClickedDivision()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
+	if (m_cType == 0) {
+		m_buf = m_result;
+		m_sample += _T(" / ");
+		m_result.Empty();
+	}
+	else {
+		m_sample.Delete(m_sample.GetLength() - 3, 3);
+		m_sample += _T(" / ");
+	}
 	m_cType = DIVISION;
-	m_buf = m_result;
-	m_result.Empty();
+	UpdateData(FALSE);
 }
 
 
 void CCalculatorDlg::OnBnClickedMulti()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	if (m_cType == 0) {
+		m_buf = m_result;
+		m_sample += _T(" * ");
+		m_result.Empty();
+	}
+	else {
+		m_sample.Delete(m_sample.GetLength() - 3, 3);
+		m_sample += _T(" * ");
+	}
 	m_cType = MULTI;
-	m_buf = m_result;
-	m_result.Empty();
+	UpdateData(FALSE);
 }
 
 
@@ -405,6 +488,8 @@ void CCalculatorDlg::OnBnClickedClear()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_result.Empty();
+	m_sample.Empty();
+	m_buf.Empty();
 	UpdateData(FALSE);
 }
 
@@ -412,6 +497,19 @@ void CCalculatorDlg::OnBnClickedClear()
 void CCalculatorDlg::OnBnClickedBack()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	m_result.Delete(m_result.GetLength() - 1, 1);
-	UpdateData(FALSE);
+	int temp = m_sample.GetLength();
+
+	if (!m_result.IsEmpty()) {
+		if (m_sample.GetAt(temp - 1) == ' ') {
+			m_sample.Delete(m_sample.GetLength() - 3, 3);
+		}
+		else {
+			m_sample.Delete(m_sample.GetLength() - 1, 1);
+		}
+		m_result.Delete(m_result.GetLength() - 1, 1);
+		UpdateData(FALSE);
+	}
+	else {
+		return;
+	}
 }
