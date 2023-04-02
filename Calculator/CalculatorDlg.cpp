@@ -417,7 +417,6 @@ void CCalculatorDlg::OnBnClickedPlus()
 			m_result.Format(_T("%.2f"), result);
 			m_sample.Format(_T("%.2f"), result);
 		}
-		m_result.Empty();
 		m_sample += _T(" + ");
 	}
 	m_cType = PLUS;
