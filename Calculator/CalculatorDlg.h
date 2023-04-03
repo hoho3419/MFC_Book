@@ -34,6 +34,7 @@ public:
 	CString m_sample;
 	CString m_buf;
 	bool m_bEqualClk;
+	bool m_resultChk;
 	int m_cType;
 
 
@@ -56,4 +57,5 @@ public:
 	afx_msg void OnBnClickedClose();
 	afx_msg void OnBnClickedClear();
 	afx_msg void OnBnClickedBack();
+	afx_msg void OnEnChangeEdit1();
 };
