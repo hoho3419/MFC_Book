@@ -196,7 +196,7 @@ enum Calculation
 
 void CCalculatorDlg::OnBnClickedNum0()
 {
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다. 깃허브
 	if (m_bEqualClk) {
 		m_result.Empty();
 		m_bEqualClk = FALSE;
