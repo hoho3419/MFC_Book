@@ -15,16 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Calculator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CalculatorDlg.h">
+    <ClInclude Include="NodePad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NodePadDoc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NodePadView.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -35,10 +41,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calculator.cpp">
+    <ClCompile Include="NodePad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CalculatorDlg.cpp">
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="NodePadDoc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="NodePadView.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -46,27 +58,30 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Calculator.rc">
+    <ResourceCompile Include="NodePad.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Calculator.rc2">
+    <Image Include="res\userimages.bmp">
       <Filter>리소스 파일</Filter>
-    </None>
+    </Image>
+    <Image Include="res\NodePadDoc.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\NodePad.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar256.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\Calculator.ico">
+    <None Include="res\NodePad.rc2">
       <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\calc.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\bitmap1.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\calcu.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
+    </None>
   </ItemGroup>
 </Project>

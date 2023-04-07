@@ -117,6 +117,12 @@ BOOL CCalculatorDlg::OnInitDialog()
 		ASSERT(bNameValid);
 		if (!strAboutMenu.IsEmpty())
 		{
+			/*
+			HICON hIcon = ::LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_ICON1));
+			CStatic* pStatic = (CStatic*)GetDlgItem(IDD_ABOUTBOX);
+			pStatic->SetIcon(hIcon);
+			::DestroyIcon(hIcon);
+			*/
 			pSysMenu->AppendMenu(MF_SEPARATOR);
 			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
 		}
@@ -124,8 +130,9 @@ BOOL CCalculatorDlg::OnInitDialog()
 
 	// 이 대화 상자의 아이콘을 설정합니다.  응용 프로그램의 주 창이 대화 상자가 아닐 경우에는
 	//  프레임워크가 이 작업을 자동으로 수행합니다.
+
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
-	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
+	SetIcon(m_hIcon, TRUE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 	CFont g_editFont;
