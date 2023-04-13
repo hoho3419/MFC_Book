@@ -2,10 +2,17 @@
 // CalculatorDlg.h: 헤더 파일
 //
 
+enum Calculation
+{
+	PLUS = 1, MINUS = 2, DIVISION = 3, MULTI = 4, NOSTATE = 5
+};
+
 #pragma once
 // CCalculatorDlg 대화 상자
 class CCalculatorDlg : public CDialogEx
 {
+private:
+	HBRUSH m_num_bk_brush;
 // 생성입니다.
 public:
 	CCalculatorDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
@@ -33,29 +40,17 @@ public:
 	CString m_result;
 	CString m_sample;
 	CString m_buf;
-	bool m_bEqualClk;
-	bool m_resultChk;
-	int m_cType;
+	Calculation m_cType;
 
-
-	afx_msg void OnBnClickedNum0();
-	afx_msg void OnBnClickedNum1();
-	afx_msg void OnBnClickedNum2();
-	afx_msg void OnBnClickedNum3();
-	afx_msg void OnBnClickedNum4();
-	afx_msg void OnBnClickedNum5();
-	afx_msg void OnBnClickedNum6();
-	afx_msg void OnBnClickedNum7();
-	afx_msg void OnBnClickedNum8();
-	afx_msg void OnBnClickedNum9();
-	afx_msg void OnBnClickedDot();
+	afx_msg void OnNumberBtnClick(UINT ctlId);
+	afx_msg void OnOperBtnClick(UINT ctlId);
 	afx_msg void OnBnClickedCalc();
-	afx_msg void OnBnClickedPlus();
-	afx_msg void OnBnClickedMinus();
-	afx_msg void OnBnClickedDivision();
-	afx_msg void OnBnClickedMulti();
 	afx_msg void OnBnClickedClose();
 	afx_msg void OnBnClickedClear();
 	afx_msg void OnBnClickedBack();
-	afx_msg void OnEnChangeEdit1();
+	void OperatorWay(Calculation ctlId, CString str);
+	afx_msg void OnSizing(UINT fwSide, LPRECT pRect);
+//	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+//	afx_msg void OnDestroy();
+//	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
 };

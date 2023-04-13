@@ -11,8 +11,8 @@
 #define IDB_PNG1                        134
 #define IDI_ICON1                       135
 #define IDR_MAINFRAME                   135
-#define IDC_EDIT1                       1000
-#define IDC_CLOSE                       1001
+#define IDC_EDIT2                       1000
+#define IDC_EDIT1                       1001
 #define IDC_NUM0                        1002
 #define IDC_NUM1                        1003
 #define IDC_NUM2                        1004
@@ -23,15 +23,16 @@
 #define IDC_NUM7                        1009
 #define IDC_NUM8                        1010
 #define IDC_NUM9                        1011
-#define IDC_DIVISION                    1012
-#define IDC_MINUS                       1013
-#define IDC_PLUS                        1014
-#define IDC_CALC                        1015
-#define IDC_MULTI                       1016
-#define IDC_EDIT2                       1017
-#define IDC_DOT                         1019
-#define IDC_BACK                        1020
-#define IDC_CLEAR                       1021
+#define IDC_DOT                         1012
+#define IDC_PLUS                        1013
+#define IDC_MINUS                       1014
+#define IDC_MULTI                       1015
+#define IDC_DIVISION                    1016
+#define IDC_CALC                        1017
+#define IDC_BACK                        1018
+#define IDC_CLEAR                       1019
+#define IDC_CLOSE                       1020
+#define IDC_LIST1                       1021
 
 // Next default values for new objects
 // 
@@ -39,7 +40,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1017
+#define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
