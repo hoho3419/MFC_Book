@@ -2,6 +2,12 @@
 // CalculatorDlg.h: 헤더 파일
 //
 
+enum Calculation
+{
+	PLUS = 1, MINUS, DIVISION, MULTI
+};
+
+
 #pragma once
 // CCalculatorDlg 대화 상자
 class CCalculatorDlg : public CDialogEx
@@ -37,7 +43,7 @@ public:
 	bool m_resultChk;
 	int m_cType;
 
-
+	afx_msg void OnNumberBtnClick(UINT ctlId);
 	afx_msg void OnBnClickedNum0();
 	afx_msg void OnBnClickedNum1();
 	afx_msg void OnBnClickedNum2();
@@ -58,4 +64,6 @@ public:
 	afx_msg void OnBnClickedClear();
 	afx_msg void OnBnClickedBack();
 	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
+	void SetupForDynamicLayout();
 };

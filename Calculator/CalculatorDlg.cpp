@@ -73,6 +73,7 @@ BEGIN_MESSAGE_MAP(CCalculatorDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	//ON_CONTROL_RANGE(BN_CLICKED, IDC_NUM0, IDC_DOT, OnNumberBtnClick)
 	ON_BN_CLICKED(IDC_NUM0, &CCalculatorDlg::OnBnClickedNum0)
 	ON_BN_CLICKED(IDC_NUM1, &CCalculatorDlg::OnBnClickedNum1)
 	ON_BN_CLICKED(IDC_NUM2, &CCalculatorDlg::OnBnClickedNum2)
@@ -93,6 +94,7 @@ BEGIN_MESSAGE_MAP(CCalculatorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CLEAR, &CCalculatorDlg::OnBnClickedClear)
 	ON_BN_CLICKED(IDC_BACK, &CCalculatorDlg::OnBnClickedBack)
 	ON_EN_CHANGE(IDC_EDIT1, &CCalculatorDlg::OnEnChangeEdit1)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -141,6 +143,7 @@ BOOL CCalculatorDlg::OnInitDialog()
 
 	g_editFont.CreatePointFont(200, TEXT("굴림"));
 	pEdit1->SetFont(&g_editFont);
+
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -195,11 +198,54 @@ HCURSOR CCalculatorDlg::OnQueryDragIcon()
 }
 
 
-enum Calculation
+void CCalculatorDlg::OnNumberBtnClick(UINT ctlId)
 {
-	PLUS = 1, MINUS, DIVISION, MULTI
-};
+	UpdateData(TRUE);
 
+	if (m_bEqualClk) {
+		m_result.Empty();
+		m_bEqualClk = FALSE;
+	}
+
+	switch (ctlId)
+	{
+	case 1002:
+		m_result += _T("0");
+		break;
+	case 1003:
+		m_result += _T("1");
+		break;
+	case 1004:
+		m_result += _T("2");
+		break;
+	case 1005:
+		m_result += _T("3");
+		break;
+	case 1006:
+		m_result += _T("4");
+		break;
+	case 1007:
+		m_result += _T("5");
+		break;
+	case 1008:
+		m_result += _T("6");
+		break;
+	case 1009:
+		m_result += _T("7");
+		break;
+	case 1010:
+		m_result += _T("8");
+		break;
+	case 1011:
+		m_result += _T("9");
+		break;
+	case 1012:
+		m_result += _T(".");
+		break;
+	}
+
+	UpdateData(FALSE);
+}
 
 void CCalculatorDlg::OnBnClickedNum0()
 {
@@ -493,3 +539,11 @@ void CCalculatorDlg::OnEnChangeEdit1()
 
 	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
+
+
+void CCalculatorDlg::OnSize(UINT nType, int cx, int cy)
+{
+	CDialogEx::OnSize(nType, cx, cy);
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+}
+

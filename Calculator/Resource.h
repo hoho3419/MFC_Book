@@ -23,15 +23,15 @@
 #define IDC_NUM7                        1009
 #define IDC_NUM8                        1010
 #define IDC_NUM9                        1011
-#define IDC_DIVISION                    1012
-#define IDC_MINUS                       1013
-#define IDC_PLUS                        1014
-#define IDC_CALC                        1015
-#define IDC_MULTI                       1016
-#define IDC_EDIT2                       1017
-#define IDC_DOT                         1019
-#define IDC_BACK                        1020
-#define IDC_CLEAR                       1021
+#define IDC_DOT                         1012
+#define IDC_DIVISION                    1013
+#define IDC_MINUS                       1014
+#define IDC_PLUS                        1015
+#define IDC_CALC                        1016
+#define IDC_MULTI                       1017
+#define IDC_EDIT2                       1018
+#define IDC_BACK                        1019
+#define IDC_CLEAR                       1020
 
 // Next default values for new objects
 // 
