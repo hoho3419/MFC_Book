@@ -50,7 +50,4 @@ public:
 	afx_msg void OnBnClickedBack();
 	void OperatorWay(Calculation ctlId, CString str);
 	afx_msg void OnSizing(UINT fwSide, LPRECT pRect);
-//	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-//	afx_msg void OnDestroy();
-//	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
 };

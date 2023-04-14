@@ -33,6 +33,7 @@
 #define IDC_CLEAR                       1019
 #define IDC_CLOSE                       1020
 #define IDC_LIST1                       1021
+#define IDC_RESULT_LIST                 1021
 
 // Next default values for new objects
 // 

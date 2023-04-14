@@ -64,6 +64,7 @@ void CCalculatorDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT1, m_result);
 	DDX_Text(pDX, IDC_EDIT2, m_sample);
+	DDX_Control(pDX, IDC_RESULT_LIST, m_result_list);
 }
 
 BEGIN_MESSAGE_MAP(CCalculatorDlg, CDialogEx)
@@ -77,9 +78,6 @@ BEGIN_MESSAGE_MAP(CCalculatorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CLEAR, &CCalculatorDlg::OnBnClickedClear)
 	ON_BN_CLICKED(IDC_BACK, &CCalculatorDlg::OnBnClickedBack)
 ON_WM_SIZING()
-//ON_WM_CTLCOLOR()
-//ON_WM_DESTROY()
-//ON_WM_DRAWITEM()
 END_MESSAGE_MAP()
 
 
@@ -121,7 +119,7 @@ BOOL CCalculatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	m_num_bk_brush = ::CreateSolidBrush(RGB(255, 255, 255));
+	//m_num_bk_brush = ::CreateSolidBrush(RGB(255, 255, 255));
 
 	CFont g_editFont;
 	CEdit* pEdit1 = (CEdit*)GetDlgItem(IDC_EDIT1);
