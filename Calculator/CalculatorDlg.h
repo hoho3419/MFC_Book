@@ -12,7 +12,7 @@ enum Calculation
 class CCalculatorDlg : public CDialogEx
 {
 private:
-	HBRUSH m_num_bk_brush;
+	//HBRUSH m_num_bk_brush;
 // 생성입니다.
 public:
 	CCalculatorDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
@@ -41,6 +41,7 @@ public:
 	CString m_sample;
 	CString m_buf;
 	Calculation m_cType;
+	CListCtrl m_result_list;
 
 	afx_msg void OnNumberBtnClick(UINT ctlId);
 	afx_msg void OnOperBtnClick(UINT ctlId);
@@ -48,6 +49,11 @@ public:
 	afx_msg void OnBnClickedClose();
 	afx_msg void OnBnClickedClear();
 	afx_msg void OnBnClickedBack();
-	void OperatorWay(Calculation ctlId, CString str);
 	afx_msg void OnSizing(UINT fwSide, LPRECT pRect);
+	afx_msg void OnDestroyBtn();
+	afx_msg void OnNMRClickResultList(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnStnClickedDesPicture();
+	afx_msg void OnNMDblclkResultList(NMHDR* pNMHDR, LRESULT* pResult);
+	void OperatorWay(Calculation ctlId, CString str);
+	void CCalculatorDlg::ResultAdd();
 };

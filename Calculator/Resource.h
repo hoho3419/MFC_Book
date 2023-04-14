@@ -8,9 +8,13 @@
 #define IDD_CALCULATOR_DIALOG           102
 #define IDB_CALC1                       131
 #define IDB_BITMAP1                     132
+#define IDB_BITMAP                      132
 #define IDB_PNG1                        134
 #define IDI_ICON1                       135
 #define IDR_MAINFRAME                   135
+#define IDR_DES_MENU                    139
+#define IDB_PNG2                        141
+#define IDI_ICON2                       142
 #define IDC_EDIT2                       1000
 #define IDC_EDIT1                       1001
 #define IDC_NUM0                        1002
@@ -34,14 +38,19 @@
 #define IDC_CLOSE                       1020
 #define IDC_LIST1                       1021
 #define IDC_RESULT_LIST                 1021
+#define IDC_DES_PICTURE                 1023
+#define IDC_BUTTON2                     1024
+#define IDC_TN_DES                      1024
+#define ID_32771                        32771
+#define ID_DESTROY_BTN                  32772
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        138
-#define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1022
+#define _APS_NEXT_RESOURCE_VALUE        143
+#define _APS_NEXT_COMMAND_VALUE         32773
+#define _APS_NEXT_CONTROL_VALUE         1025
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
