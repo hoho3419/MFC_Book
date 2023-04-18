@@ -82,6 +82,8 @@ ON_COMMAND(ID_DESTROY_BTN, &CCalculatorDlg::OnDestroyBtn)
 ON_NOTIFY(NM_RCLICK, IDC_RESULT_LIST, &CCalculatorDlg::OnNMRClickResultList)
 ON_STN_CLICKED(IDC_DES_PICTURE, &CCalculatorDlg::OnStnClickedDesPicture)
 ON_NOTIFY(NM_DBLCLK, IDC_RESULT_LIST, &CCalculatorDlg::OnNMDblclkResultList)
+//ON_WM_KEYDOWN()
+ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -129,9 +131,11 @@ BOOL CCalculatorDlg::OnInitDialog()
 	m_result_list.InsertColumn(3, _T("시간"), LVCFMT_CENTER, 150, 3);
 	m_result_list.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 
+
 	// EDIT1 폰트 작업 크기 초기화
 	CFont g_editFont;
 	CEdit* pEdit1 = (CEdit*)GetDlgItem(IDC_EDIT1);
+	pEdit1->EnableWindow(FALSE);
 	g_editFont.CreatePointFont(350, TEXT("굴림"));
 	pEdit1->SetFont(&g_editFont);
 
@@ -191,7 +195,12 @@ HCURSOR CCalculatorDlg::OnQueryDragIcon()
 void CCalculatorDlg::OnNumberBtnClick(UINT ctlId)
 {
 	UpdateData(TRUE);
-
+	if (m_cType == RESTATE) {
+		m_result.Empty();
+		m_sample.Empty();
+		m_buf.Empty();
+		m_cType = NOSTATE;
+	}
 	switch (ctlId)
 	{
 	case IDC_NUM0:
@@ -256,6 +265,7 @@ void CCalculatorDlg::OperatorWay(Calculation ctlId, CString str)
 		m_sample += str;
 	}
 	m_cType = ctlId;
+	UpdateData(FALSE);
 }
 
 void CCalculatorDlg::OnOperBtnClick(UINT ctlId)
@@ -275,7 +285,6 @@ void CCalculatorDlg::OnOperBtnClick(UINT ctlId)
 		OperatorWay(DIVISION, _T(" / "));
 		break;
 	}
-	UpdateData(FALSE);
 }
 
 void CCalculatorDlg::OnBnClickedCalc()
@@ -284,10 +293,14 @@ void CCalculatorDlg::OnBnClickedCalc()
 	double num1 = 0;
 	double num2 = 0;
 	double result = 0;
+	CString y_day;
+	CString t_sec;
+	CTime c_tm = CTime::GetCurrentTime();
+	y_day = c_tm.Format("%y-%m-%d");
+	t_sec = c_tm.Format("%H:%M:%S");
 
 	num1 = _tstof(m_buf);
 	num2 = _tstof(m_result);
-
 
 	switch (m_cType)
 	{
@@ -310,12 +323,12 @@ void CCalculatorDlg::OnBnClickedCalc()
 	}
 	else {
 		m_result.Format(_T("%g"), result);
-		m_sample.Format(_T("%2f"), result);
+		m_sample.Format(_T("%g"), result);
 	}
 	m_buf = m_result;
-	m_cType = NOSTATE;
+	m_cType = RESTATE;
 	UpdateData(FALSE);
-	ResultAdd();
+	ResultAdd(m_result, y_day, t_sec);
 	m_result.Empty();
 }
 
@@ -336,6 +349,7 @@ void CCalculatorDlg::OnBnClickedClear()
 	m_sample.Empty();
 	m_buf.Empty();
 	m_cType = NOSTATE;
+	GetDlgItem(IDC_EDIT1)->SetFocus();
 	UpdateData(FALSE);
 }
 
@@ -345,7 +359,6 @@ void CCalculatorDlg::OnBnClickedBack()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_result.Delete(m_result.GetLength() - 1, 1);
 	UpdateData(FALSE);
-
 	/*
 	int temp = m_sample.GetLength();
 	if (m_result.IsEmpty() == 0) {
@@ -395,33 +408,28 @@ void CCalculatorDlg::OnSizing(UINT fwSide, LPRECT pRect)
 }
 
 
-void CCalculatorDlg::ResultAdd() 
+void CCalculatorDlg::ResultAdd(CString result, CString day, CString time)
 {
 	int count = 0;
 	LVITEM lvitem;
-	CString y_day;
-	CString t_sec;
-	CTime c_tm = CTime::GetCurrentTime();
-	y_day = c_tm.Format("%y-%m-%d");
-	t_sec = c_tm.Format("%H:%M:%S");
 	count = m_result_list.GetItemCount();
 
 	lvitem.mask = LVIF_TEXT;
 	lvitem.iItem = count;
 	lvitem.iSubItem = 0;
-	lvitem.pszText = m_result.GetBuffer(0);
+	lvitem.pszText = result.GetBuffer(0);
 	m_result_list.InsertItem(&lvitem);
 
 	lvitem.mask = LVIF_TEXT;
 	lvitem.iItem = count; 
 	lvitem.iSubItem = 1;
-	lvitem.pszText = y_day.GetBuffer(0);
+	lvitem.pszText = day.GetBuffer(0);
 	m_result_list.SetItem(&lvitem);
 
 	lvitem.mask = LVIF_TEXT;
 	lvitem.iItem = count;
 	lvitem.iSubItem = 2;
-	lvitem.pszText = t_sec.GetBuffer(0);
+	lvitem.pszText = time.GetBuffer(0);
 	m_result_list.SetItem(&lvitem);
 
 	/*
@@ -429,6 +437,7 @@ void CCalculatorDlg::ResultAdd()
 	m_result_list.SetItemText(0, 1, _T("안녕"));
 	m_result_list.SetItemText(0, 2, _T("Hi"));
 	*/
+
 }
 //HBRUSH CCalculatorDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 //{
@@ -534,4 +543,87 @@ void CCalculatorDlg::OnNMDblclkResultList(NMHDR* pNMHDR, LRESULT* pResult)
 	m_sample = str;
 	*pResult = 0;
 	UpdateData(FALSE);
+}
+
+
+
+BOOL CCalculatorDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	if (pMsg->message == WM_KEYDOWN){
+		switch (pMsg->wParam)
+		{
+		case VK_NUMPAD0:
+			OnNumberBtnClick(IDC_NUM0);
+			break;
+		case VK_NUMPAD1:
+			OnNumberBtnClick(IDC_NUM1);
+			break;
+		case VK_NUMPAD2:
+			OnNumberBtnClick(IDC_NUM2);
+			break;
+		case VK_NUMPAD3:
+			OnNumberBtnClick(IDC_NUM3);
+			break;
+		case VK_NUMPAD4:
+			OnNumberBtnClick(IDC_NUM4);
+			break;
+		case VK_NUMPAD5:
+			OnNumberBtnClick(IDC_NUM5);
+			break;
+		case VK_NUMPAD6:
+			OnNumberBtnClick(IDC_NUM6);
+			break;
+		case VK_NUMPAD7:
+			OnNumberBtnClick(IDC_NUM7);
+			break;
+		case VK_NUMPAD8:
+			OnNumberBtnClick(IDC_NUM8);
+			break;
+		case VK_NUMPAD9:
+			OnNumberBtnClick(IDC_NUM9);
+			break;
+		case VK_OEM_PERIOD:
+			OnNumberBtnClick(IDC_DOT);
+			break;
+		case VK_ADD:
+			OperatorWay(PLUS, _T(" + "));
+			break;
+		case VK_SUBTRACT:
+			OperatorWay(MINUS, _T(" - "));
+			break;
+		case VK_MULTIPLY:
+			OperatorWay(MULTI, _T(" * "));
+			break;
+		case VK_DIVIDE:
+			OperatorWay(DIVISION, _T(" / "));
+			break;
+		case VK_OEM_PLUS:
+			OnBnClickedCalc();
+			break;
+		case VK_DELETE:
+			OnBnClickedClear();
+			break;
+		}
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+HBRUSH CCalculatorDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  여기서 DC의 특성을 변경합니다.
+	if (pWnd->GetDlgCtrlID() == IDC_EDIT1)
+	{
+		CBrush brush(RGB(255, 255, 255));
+
+		pDC->SetBkColor((COLORREF)brush.GetSafeHandle());
+
+		hbr = brush;
+	}
+
+	return hbr;
 }

@@ -4,7 +4,7 @@
 
 enum Calculation
 {
-	PLUS = 1, MINUS = 2, DIVISION = 3, MULTI = 4, NOSTATE = 5
+	PLUS = 1, MINUS = 2, DIVISION = 3, MULTI = 4, NOSTATE = 5, RESTATE = 6
 };
 
 #pragma once
@@ -43,6 +43,7 @@ public:
 	Calculation m_cType;
 	CListCtrl m_result_list;
 
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnNumberBtnClick(UINT ctlId);
 	afx_msg void OnOperBtnClick(UINT ctlId);
 	afx_msg void OnBnClickedCalc();
@@ -54,6 +55,7 @@ public:
 	afx_msg void OnNMRClickResultList(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnStnClickedDesPicture();
 	afx_msg void OnNMDblclkResultList(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	void OperatorWay(Calculation ctlId, CString str);
-	void CCalculatorDlg::ResultAdd();
+	void ResultAdd(CString result, CString day, CString time);
 };
