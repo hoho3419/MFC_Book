@@ -99,6 +99,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListControl", "..\ListContr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileExplor", "..\FileExplor\FileExplor.vcxproj", "{66390402-4684-421B-B960-7CD96CD2E1E5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileExplorer2", "..\FileExplorer2\FileExplorer2.vcxproj", "{5A1DEFDD-B530-4553-B492-15389028ABFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -491,6 +493,14 @@ Global
 		{66390402-4684-421B-B960-7CD96CD2E1E5}.Release|x64.Build.0 = Release|x64
 		{66390402-4684-421B-B960-7CD96CD2E1E5}.Release|x86.ActiveCfg = Release|Win32
 		{66390402-4684-421B-B960-7CD96CD2E1E5}.Release|x86.Build.0 = Release|Win32
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Debug|x64.ActiveCfg = Debug|x64
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Debug|x64.Build.0 = Debug|x64
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Debug|x86.ActiveCfg = Debug|Win32
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Debug|x86.Build.0 = Debug|Win32
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Release|x64.ActiveCfg = Release|x64
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Release|x64.Build.0 = Release|x64
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Release|x86.ActiveCfg = Release|Win32
+		{5A1DEFDD-B530-4553-B492-15389028ABFE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

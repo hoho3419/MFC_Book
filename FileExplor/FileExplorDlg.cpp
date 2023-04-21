@@ -165,19 +165,23 @@ HCURSOR CFileExplorDlg::OnQueryDragIcon()
 void CFileExplorDlg::InitTreeCtrl()
 {
 	// TODO: 여기에 구현 코드 추가.
+	// 처음 문자열을 삽입 후 삽입된 트리에 핸들을 반환 -> 삽입된 핸들과 삽입전 핸들값은 서로 다르다.
 	HTREEITEM hItem = m_Tree.InsertItem(_T("C:"));
-
+	// 현재 디렉토리를 찾을때 사용되는 클래스 생성
 	CFileFind finder;
+	// 파일을 찾고 찾았으면 TRUE를 반환
 	BOOL bWorking = finder.FindFile(_T("C:\\*.*"));
 	while (bWorking) {
+		// 다음 파일을 찾고 결과를 리턴
 		bWorking = finder.FindNextFile();
+		// 폴더만 넣을 수 있게 조건문 생성
 		if (finder.IsDirectory()) {
-			m_Tree.InsertItem(finder.GetFileName(),hItem);
+			// 폴더 이름을 삽입하고 C: 문자열이 삽입된 트리 컨트롤의 핸들값에 삽입한다.
+			m_Tree.InsertItem(finder.GetFileName(), hItem);
 		}
 	}
+	// 스크롤을 조정해준다.
 	m_Tree.EnsureVisible(hItem);
-
-	
 }
 
 
@@ -250,9 +254,9 @@ void CFileExplorDlg::OnSize(UINT nType, int cx, int cy)
 	CWnd* pOk = GetDlgItem(IDOK);
 	CWnd* pCancel = GetDlgItem(IDCANCEL);
 	if (pTree == NULL) {return;}
-	if (pList == NULL) { return; }
-	if (pOk == NULL) { return; }
-	if (pCancel == NULL) { return; }
+	if (pList == NULL) {return;}
+	if (pOk == NULL) {return;}
+	if (pCancel == NULL) {return;}
 
 	CRect rTree;
 	CRect rList;
