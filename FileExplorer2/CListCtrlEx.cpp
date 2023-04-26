@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CListCtrlEx.h"
 
+IMPLEMENT_DYNAMIC(CListCtrlEx, CListCtrl)
 
 CListCtrlEx::CListCtrlEx(void)
 {

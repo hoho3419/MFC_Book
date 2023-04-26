@@ -248,11 +248,11 @@ void CCalculatorDlg::OnNumberBtnClick(UINT ctlId)
 
 void CCalculatorDlg::OperatorWay(Calculation ctlId, CString str)
 {
-	if (m_buf.IsEmpty() == 0 && m_result.IsEmpty() == 0) {
+	if (m_buf.IsEmpty() == FALSE && m_result.IsEmpty() == FALSE ) {
 		OnBnClickedCalc();
 		m_sample = m_buf + str;
 	}
-	else if (m_buf.IsEmpty() == 0 && m_result.IsEmpty() != 0) {
+	else if (m_buf.IsEmpty() == FALSE && m_result.IsEmpty() != FALSE ) {
 		m_sample = m_buf + str;
 	}
 	else if (m_cType == NOSTATE) {
@@ -273,7 +273,7 @@ void CCalculatorDlg::OnOperBtnClick(UINT ctlId)
 	switch (ctlId)
 	{
 	case IDC_PLUS:
-		OperatorWay(PLUS, _T(" + "));
+		OperatorWay(PLUS, _T(" + ")); // +
 		break;
 	case IDC_MINUS:
 		OperatorWay(MINUS, _T(" - "));
@@ -620,7 +620,7 @@ HBRUSH CCalculatorDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	{
 		CBrush brush(RGB(255, 255, 255));
 
-		pDC->SetBkColor((COLORREF)brush.GetSafeHandle());
+		pDC->SetBkColor((COLORREF)RGB(0, 255, 255));
 
 		hbr = brush;
 	}

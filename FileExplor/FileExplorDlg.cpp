@@ -165,6 +165,13 @@ HCURSOR CFileExplorDlg::OnQueryDragIcon()
 void CFileExplorDlg::InitTreeCtrl()
 {
 	// TODO: 여기에 구현 코드 추가.
+
+	imageListNormal.Create(16, 16, ILC_COLOR32, 2, 2);
+	imageListSelected.Create(16, 16, ILC_COLOR32, 2, 2);
+
+	HICON hIconNormal = AfxGetApp()->LoadIcon(IDI_ICON1);  // 선택되지 않은 상태 아이콘 로드
+	HICON hIconSelected = AfxGetApp()->LoadIcon(IDI_ICON2);
+
 	// 처음 문자열을 삽입 후 삽입된 트리에 핸들을 반환 -> 삽입된 핸들과 삽입전 핸들값은 서로 다르다.
 	HTREEITEM hItem = m_Tree.InsertItem(_T("C:"));
 	// 현재 디렉토리를 찾을때 사용되는 클래스 생성
@@ -180,7 +187,7 @@ void CFileExplorDlg::InitTreeCtrl()
 			m_Tree.InsertItem(finder.GetFileName(), hItem);
 		}
 	}
-	// 스크롤을 조정해준다.
+	// 이 핸들값에 있는 정보들을 보여주는걸 보장하는 함수
 	m_Tree.EnsureVisible(hItem);
 }
 

@@ -8,6 +8,9 @@
 // CFileExplorDlg 대화 상자
 class CFileExplorDlg : public CDialogEx
 {
+private:
+	CImageList imageListNormal;
+	CImageList imageListSelected;
 // 생성입니다.
 public:
 	CFileExplorDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
@@ -24,6 +27,8 @@ public:
 // 구현입니다.
 protected:
 	HICON m_hIcon;
+	HICON hIconNormal;
+	HICON hIconSelected;
 
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
